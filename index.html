@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Net Zero Futures Research Series | Joel Terwilliger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Surrey-informed palette from figures */
+  --surrey-teal:    #1DA8A0;
+  --surrey-teal-dk: #157A73;
+  --surrey-teal-pl: #E0F4F3;
+  --surrey-green:   #2E7D4F;
+  --surrey-green-pl:#EAF3EF;
+  --surrey-blue:    #4A90C4;
+  --surrey-blue-pl: #E8F1F8;
+  --surrey-purple:  #7B3F9E;
+  --surrey-purple-pl:#F0EAF7;
+  --surrey-amber:   #C89A1A;
+  --surrey-amber-pl:#FDF3DC;
+  --surrey-crimson: #B03020;
+  --surrey-crimson-pl:#FAEAE8;
+
+  --gray-dark:  #2C2C2A;
+  --gray-mid:   #5F5E5A;
+  --gray-light: #D3D1C7;
+  --gray-pale:  #F1EFE8;
+  --white:      #FFFFFF;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  color: var(--gray-dark);
+  background: var(--white);
+  line-height: 1.7;
+}
+
+/* ── HEADER ─────────────────────────────────────────────────────────────── */
+.site-header {
+  background: var(--gray-dark);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.site-header .logo {
+  font-family: 'DM Serif Display', serif;
+  color: var(--white);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+.site-header .badge {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--surrey-teal);
+  border: 1px solid var(--surrey-teal-dk);
+  padding: 0.25rem 0.75rem;
+  border-radius: 2rem;
+}
+
+/* ── HERO ────────────────────────────────────────────────────────────────── */
+.hero {
+  background: var(--gray-dark);
+  padding: 5rem 2rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 420px; height: 420px;
+  border-radius: 50%;
+  border: 1px solid rgba(29,168,160,0.18);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: 60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  border: 1px solid rgba(29,168,160,0.10);
+}
+.hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.hero-kicker {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--surrey-teal);
+  margin-bottom: 1.25rem;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+.hero h1 em {
+  color: var(--surrey-teal);
+  font-style: italic;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: #B4B2A9;
+  max-width: 580px;
+  margin-bottom: 1.75rem;
+  line-height: 1.8;
+}
+.hero-meta {
+  font-size: 0.8rem;
+  color: #888780;
+  letter-spacing: 0.04em;
+}
+.hero-meta a {
+  color: var(--surrey-teal);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(29,168,160,0.35);
+  transition: border-color 0.15s;
+}
+.hero-meta a:hover { border-color: var(--surrey-teal); }
+
+/* ── LAYOUT ─────────────────────────────────────────────────────────────── */
+.content-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── INTRO ───────────────────────────────────────────────────────────────── */
+.intro-section {
+  padding: 4rem 0 3rem;
+  border-bottom: 1px solid var(--gray-light);
+}
+.intro-section p {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--gray-dark);
+  margin-bottom: 1.2rem;
+}
+.intro-section p:last-child { margin-bottom: 0; }
+.intro-section p strong {
+  font-weight: 500;
+}
+
+.pull-quote {
+  border-left: 3px solid var(--surrey-teal);
+  padding: 1rem 0 1rem 1.5rem;
+  margin: 2rem 0;
+}
+.pull-quote p {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--gray-dark);
+  font-style: italic;
+  margin-bottom: 0 !important;
+}
+
+/* ── KEYWORD CHIPS ───────────────────────────────────────────────────────── */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1.75rem 0 0;
+}
+.chip {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.28rem 0.7rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+}
+.chip.teal   { background: var(--surrey-teal-pl);   color: var(--surrey-teal-dk); border: 1px solid rgba(29,168,160,0.3); }
+.chip.green  { background: var(--surrey-green-pl);  color: var(--surrey-green);   border: 1px solid rgba(46,125,79,0.25); }
+.chip.purple { background: var(--surrey-purple-pl); color: var(--surrey-purple);  border: 1px solid rgba(123,63,158,0.25); }
+
+/* ── SERIES SECTION ──────────────────────────────────────────────────────── */
+.series-section {
+  padding: 3.5rem 0;
+}
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--surrey-teal);
+  margin-bottom: 1.5rem;
+}
+.series-section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.9rem;
+  color: var(--gray-dark);
+}
+.series-section > p {
+  font-size: 1rem;
+  color: var(--gray-mid);
+  margin-bottom: 2.5rem;
+  max-width: 620px;
+  line-height: 1.8;
+}
+
+/* ── BRIEF CARDS ─────────────────────────────────────────────────────────── */
+.brief-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.brief-card {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.5rem;
+  border: 1px solid var(--gray-light);
+  border-radius: 12px;
+  background: var(--white);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  color: inherit;
+}
+.brief-card:hover {
+  box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+}
+.brief-card:hover.b1 { border-color: var(--surrey-teal); }
+.brief-card:hover.b2 { border-color: var(--surrey-amber); }
+.brief-card:hover.b3 { border-color: var(--surrey-crimson); }
+.brief-card:hover.b4 { border-color: var(--surrey-blue); }
+.brief-card:hover.b5 { border-color: var(--surrey-green); }
+
+.brief-num {
+  width: 56px; height: 56px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+.b1 .brief-num { background: var(--surrey-teal-pl);    color: var(--surrey-teal-dk); }
+.b2 .brief-num { background: var(--surrey-amber-pl);   color: var(--surrey-amber); }
+.b3 .brief-num { background: var(--surrey-crimson-pl); color: var(--surrey-crimson); }
+.b4 .brief-num { background: var(--surrey-blue-pl);    color: var(--surrey-blue); }
+.b5 .brief-num { background: var(--surrey-green-pl);   color: var(--surrey-green); }
+
+.brief-tag {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray-mid);
+  margin-bottom: 0.3rem;
+}
+.brief-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.05rem;
+  color: var(--gray-dark);
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+}
+.brief-desc {
+  font-size: 0.88rem;
+  color: var(--gray-mid);
+  line-height: 1.65;
+  margin-bottom: 0.5rem;
+}
+.brief-supplement {
+  font-size: 0.82rem;
+  color: var(--gray-mid);
+  font-style: italic;
+  line-height: 1.55;
+}
+.brief-supplement a {
+  color: var(--surrey-teal-dk);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(21,122,115,0.3);
+}
+.brief-supplement a:hover { border-color: var(--surrey-teal-dk); }
+
+.brief-dl {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid;
+  padding: 0.45rem 0.9rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: opacity 0.15s;
+  margin-top: 4px;
+}
+.brief-dl:hover { opacity: 0.75; }
+.b1 .brief-dl { color: var(--surrey-teal-dk);   background: var(--surrey-teal-pl);    border-color: rgba(29,168,160,0.35); }
+.b2 .brief-dl { color: var(--surrey-amber);     background: var(--surrey-amber-pl);   border-color: rgba(200,154,26,0.35); }
+.b3 .brief-dl { color: var(--surrey-crimson);   background: var(--surrey-crimson-pl); border-color: rgba(176,48,32,0.3); }
+.b4 .brief-dl { color: var(--surrey-blue);      background: var(--surrey-blue-pl);    border-color: rgba(74,144,196,0.35); }
+.b5 .brief-dl { color: var(--surrey-green);     background: var(--surrey-green-pl);   border-color: rgba(46,125,79,0.3); }
+.brief-dl svg { width: 13px; height: 13px; }
+
+/* ── NARRATIVE SECTIONS ──────────────────────────────────────────────────── */
+.narrative-section {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--gray-light);
+}
+.narrative-section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem;
+  margin-bottom: 1.2rem;
+  color: var(--gray-dark);
+}
+.narrative-section p {
+  font-size: 1rem;
+  color: var(--gray-dark);
+  line-height: 1.85;
+  margin-bottom: 1.1rem;
+}
+.narrative-section p:last-child { margin-bottom: 0; }
+
+.highlight-box {
+  background: var(--gray-pale);
+  border-left: 3px solid var(--gray-mid);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+}
+.highlight-box p {
+  font-size: 0.95rem;
+  color: var(--gray-mid);
+  margin-bottom: 0 !important;
+  line-height: 1.75;
+}
+
+/* ── INSIGHT GRID ────────────────────────────────────────────────────────── */
+.insight-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.insight-item {
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  background: var(--white);
+  border-left-width: 3px;
+}
+.insight-item.i-teal   { border-left-color: var(--surrey-teal); }
+.insight-item.i-green  { border-left-color: var(--surrey-green); }
+.insight-item.i-amber  { border-left-color: var(--surrey-amber); }
+.insight-item.i-purple { border-left-color: var(--surrey-purple); }
+
+.insight-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+.i-teal   .insight-label { color: var(--surrey-teal); }
+.i-green  .insight-label { color: var(--surrey-green); }
+.i-amber  .insight-label { color: var(--surrey-amber); }
+.i-purple .insight-label { color: var(--surrey-purple); }
+
+.insight-item p {
+  font-size: 0.88rem;
+  color: var(--gray-dark);
+  line-height: 1.6;
+  margin-bottom: 0 !important;
+}
+.insight-item p strong { font-weight: 500; }
+
+/* ── ABOUT / FOOTER ──────────────────────────────────────────────────────── */
+.about-section {
+  background: var(--gray-pale);
+  margin: 3rem -2rem 0;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--gray-light);
+}
+.about-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+.about-section h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  margin-bottom: 0.75rem;
+  color: var(--gray-dark);
+}
+.about-section p {
+  font-size: 0.88rem;
+  color: var(--gray-mid);
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+.about-section p:last-child { margin-bottom: 0; }
+.about-section a {
+  color: var(--surrey-teal-dk);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(21,122,115,0.3);
+}
+.about-section a:hover { border-color: var(--surrey-teal-dk); }
+.about-links {
+  margin-top: 0.9rem;
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+.about-links a {
+  color: var(--surrey-teal-dk);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(21,122,115,0.3);
+}
+.about-links a:hover { border-color: var(--surrey-teal-dk); }
+
+footer {
+  background: var(--gray-dark);
+  padding: 2rem;
+  text-align: center;
+}
+footer p {
+  font-size: 0.78rem;
+  color: #888780;
+  line-height: 1.7;
+}
+footer a { color: var(--surrey-teal); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .brief-card { grid-template-columns: 44px 1fr; }
+  .brief-dl   { display: none; }
+  .insight-grid { grid-template-columns: 1fr; }
+  .about-inner  { grid-template-columns: 1fr; gap: 2rem; }
+  .about-section { margin: 3rem -1rem 0; padding: 2.5rem 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <span class="logo">Joel Terwilliger</span>
+  <span class="badge">Research Series</span>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-kicker">Towards More Participatory Net Zero Futures (NZF) &nbsp;·&nbsp; Centre for Environment and Sustainability</p>
+    <h1>Net Zero Futures<br>Research Series<br><em>does innovating net zero<br>mission governance actually work?</em></h1>
+    <p class="hero-sub">A practitioner-researcher's journey through the gap between governance innovation ambition and the messy, under-resourced, people-dependent realities of cities trying to reach net zero.</p>
+    <p class="hero-meta">
+      Joel Terwilliger &nbsp;·&nbsp; University of Surrey, 2026 &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/joel-terwilliger-8aab2a19/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
+      <a href="https://orcid.org/0000-0003-4893-2846" target="_blank">ORCID 0000-0003-4893-2846</a>
+    </p>
+  </div>
+</section>
+
+<div class="content-wrap">
+
+  <!-- INTRO -->
+  <section class="intro-section">
+    <p>Nearly four years of research — with an extensive research stay embedded in the EU NetZeroCities Mission Platform, working alongside Bristol City Council, community organisations, urban planning and finance specialists, closely following dozens of UK and EU 'Trailblazer' cities, and reviewing digital resources across more platforms than I can count — I kept encountering the same tension. The governance tools being developed for cities tackling the net zero transition were genuinely innovative: more participatory, more reflexive, more ambitious than anything that came before. And yet, the people trying to use them kept hitting the same walls.</p>
+
+    <p>The frameworks are proliferating in governance systems but largely disconnected from cities' needs or abilities to integrate them. Co-benefits are named in strategies but rarely measured. Community engagement is called for in guidance but rarely resourced. The 'radical collaboration' that the mission approach aspires to keeps colliding with austerity, risk aversion, and the sheer weight of institutional complexity and collective action inertia.</p>
+
+    <div class="pull-quote">
+      <p>"Behind every tool are 'anchor people' trying to make it work — each carrying distinct perspectives, from institutional mandates and investor criteria to resident needs."</p>
+    </div>
+
+    <p>This series draws on that empirical work to offer something more than a critique. It maps what the tools are designed to do, where they fall short, and — crucially — what it actually takes to make them work in practice. Across Bristol, fellow Mission cities, and UK pathfinder places, the same finding kept surfacing: <strong>the gap between governance ambition and practice is not primarily technical. It's down to the long-term, complex 'people work' of more participatory, inclusive net zero futures: relational, institutional, and political.</strong></p>
+
+    <div class="chip-row">
+      <!-- Teal: governance tools & concepts -->
+      <span class="chip teal">Net zero</span>
+      <span class="chip teal">Urban governance</span>
+      <span class="chip teal">Climate governance</span>
+      <span class="chip teal">Governance innovation</span>
+      <span class="chip teal">Participatory governance</span>
+      <span class="chip teal">Procedural governance tools</span>
+      <span class="chip teal">Participatory planning</span>
+      <span class="chip teal">Climate City Contracts</span>
+      <span class="chip teal">Learning innovation</span>
+      <span class="chip teal">REPAIR framework</span>
+      <!-- Green: place & action -->
+      <span class="chip green">Just transition</span>
+      <span class="chip green">Co-benefits</span>
+      <span class="chip green">Community climate action</span>
+      <span class="chip green">Bristol City Council case</span>
+      <span class="chip green">Place-based innovation</span>
+      <span class="chip green">Financial innovation models</span>
+      <!-- Purple: networks & programmes -->
+      <span class="chip purple">Mission cities</span>
+      <span class="chip purple">NetZeroCities</span>
+      <span class="chip purple">EU Cities Mission</span>
+      <span class="chip purple">UK Net Zero Living</span>
+    </div>
+  </section>
+
+  <!-- BRIEF CARDS -->
+  <section class="series-section">
+    <p class="section-label">The series</p>
+    <h2>Five briefs, five angles on the same challenge</h2>
+    <p>Each brief stands on its own but builds on the one before. Together they move from conceptual tools, to data analysis, to Bristol's toolkit, to lived practitioner experience, to a final critical reckoning with the mission approach itself.</p>
+
+    <div class="brief-list">
+
+      <div class="brief-card b1" role="link" tabindex="0" onclick="window.open('https://zenodo.org/records/20595053/files/NZF_PolicyBrief1_Urban_Gov_Design.pdf?download=1','_blank')" onkeydown="if(event.key==='Enter')window.open('https://zenodo.org/records/20595053/files/NZF_PolicyBrief1_Urban_Gov_Design.pdf?download=1','_blank')">
+        <div class="brief-num">1</div>
+        <div class="brief-body">
+          <p class="brief-tag">Brief 1 · 21 May 2026</p>
+          <p class="brief-title">Contemporary Urban Governance Innovation Design: Principles, Tools, and an Innovation Typology</p>
+          <p class="brief-desc">Introduces the REPAIR framework — six governance innovation design principles synthesised from 25 Procedural Governance Tools — and the Innovation Diamond typology. The foundational conceptual toolkit for the whole series.</p>
+          <p class="brief-supplement">Supplements the peer-reviewed article <em>Cities and governance for net-zero</em> in <em>Sustainability</em> (2025) — <a href="https://doi.org/10.3390/su17062698" target="_blank" onclick="event.stopPropagation()">doi.org/10.3390/su17062698</a></p>
+        </div>
+        <a class="brief-dl" href="https://zenodo.org/records/20595053/files/NZF_PolicyBrief1_Urban_Gov_Design.pdf?download=1" target="_blank" onclick="event.stopPropagation()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="brief-card b2" role="link" tabindex="0" onclick="window.open('https://zenodo.org/records/20595362/files/NZF_PolicyBrief2_Co-Benefits%20in%20Urban%20Gov.pdf?download=1','_blank')" onkeydown="if(event.key==='Enter')window.open('https://zenodo.org/records/20595362/files/NZF_PolicyBrief2_Co-Benefits%20in%20Urban%20Gov.pdf?download=1','_blank')">
+        <div class="brief-num">2</div>
+        <div class="brief-body">
+          <p class="brief-tag">Brief 2 · 26 May 2026</p>
+          <p class="brief-title">Valuing What Matters in Urban Climate Governance: Co-Benefits Gaps and Functions in Making the Case for Action</p>
+          <p class="brief-desc">Traces a four-stage 'co-benefits cascade' — from what frameworks propose to what is actually measured — across Mission Label cities, from a close examination of the 10 in Cohort 1, to wider patterns mirrored in the 92 in Cohorts 1–4, to the overarching urban climate governance data system. Introduces the Four Functions Model for how cities use co-benefits in practice.</p>
+          <p class="brief-supplement">Supplements the forthcoming article <em>Making the Case for Climate Action in Cities</em> in <em>Urban Governance</em> (2026, accepted)</p>
+        </div>
+        <a class="brief-dl" href="https://zenodo.org/records/20595362/files/NZF_PolicyBrief2_Co-Benefits%20in%20Urban%20Gov.pdf?download=1" target="_blank" onclick="event.stopPropagation()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="brief-card b3" role="link" tabindex="0" onclick="window.open('https://zenodo.org/records/20595591/files/NZF_PolicyBrief3_Bristol%20Just%20Transition%20Toolkit.pdf?download=1','_blank')" onkeydown="if(event.key==='Enter')window.open('https://zenodo.org/records/20595591/files/NZF_PolicyBrief3_Bristol%20Just%20Transition%20Toolkit.pdf?download=1','_blank')">
+        <div class="brief-num">3</div>
+        <div class="brief-body">
+          <p class="brief-tag">Brief 3 · 28 May 2026</p>
+          <p class="brief-title">Governing a Just Net Zero Transition: The Bristol Toolkit and City and Community Visions for Change</p>
+          <p class="brief-desc">Maps a sample of Bristol's cross-sector decision-support toolkit — the Four-Lens Model, the Tripod Approach, Community Climate Action Plans — and asks: are city and community visions for change converging, or running in parallel?</p>
+        </div>
+        <a class="brief-dl" href="https://zenodo.org/records/20595591/files/NZF_PolicyBrief3_Bristol%20Just%20Transition%20Toolkit.pdf?download=1" target="_blank" onclick="event.stopPropagation()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="brief-card b4" role="link" tabindex="0" onclick="window.open('https://zenodo.org/records/20595731/files/NZF_PolicyBrief4_Gov%20Net%20Zero%20Missions.pdf?download=1','_blank')" onkeydown="if(event.key==='Enter')window.open('https://zenodo.org/records/20595731/files/NZF_PolicyBrief4_Gov%20Net%20Zero%20Missions.pdf?download=1','_blank')">
+        <div class="brief-num">4</div>
+        <div class="brief-body">
+          <p class="brief-tag">Brief 4 · 1 June 2026</p>
+          <p class="brief-title">Governing Net Zero Missions: Innovation, Alignment, and Mobilisation Insights from Bristol and Fellow Cities</p>
+          <p class="brief-desc">Draws on 16 stakeholder interviews across Bristol's public, knowledge/advisory, and VCSE sectors to examine the 'people work' of mission governance — why alignment across competing institutional logics and 'languages' is so hard, and what actually makes it possible.</p>
+        </div>
+        <a class="brief-dl" href="https://zenodo.org/records/20595731/files/NZF_PolicyBrief4_Gov%20Net%20Zero%20Missions.pdf?download=1" target="_blank" onclick="event.stopPropagation()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+      <div class="brief-card b5" role="link" tabindex="0" onclick="window.open('https://zenodo.org/records/20595828/files/NZF_PolicyBrief5_Missions%2C%20Myths%2C%20and%20PGTs.pdf?download=1','_blank')" onkeydown="if(event.key==='Enter')window.open('https://zenodo.org/records/20595828/files/NZF_PolicyBrief5_Missions%2C%20Myths%2C%20and%20PGTs.pdf?download=1','_blank')">
+        <div class="brief-num">5</div>
+        <div class="brief-body">
+          <p class="brief-tag">Brief 5 · 3 June 2026</p>
+          <p class="brief-title">Missions, Myths, and Contemporary Procedural Governance Tools: Reflections and a Proposed Research Agenda</p>
+          <p class="brief-desc">A critical synthesis. Applies the 3Ms — Myths, Mechanisms, and Productive Margins — to evaluate what EU Cities Mission and UK Net Zero Living programme approaches have achieved, where assumptions don't hold, and what a future research and governance design agenda must address.</p>
+        </div>
+        <a class="brief-dl" href="https://zenodo.org/records/20595828/files/NZF_PolicyBrief5_Missions%2C%20Myths%2C%20and%20PGTs.pdf?download=1" target="_blank" onclick="event.stopPropagation()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PDF
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHAT I FOUND -->
+  <section class="narrative-section">
+    <p class="section-label">What I found</p>
+    <h2>The gap between tool design and governance reality</h2>
+
+    <p>The starting point for this research was a simple but persistently common observation: cities across Europe and the UK are taking bold strides towards genuinely innovative governance approaches — participatory planning, cross-sector Transition Teams, reflexive monitoring systems, community co-production — and yet the gap between what these tools are designed to do and current operational capacities and capabilities on the ground remains stubbornly wide.</p>
+
+    <p>Part of the problem is structural. Governance tools proliferate through transnational networks faster than the infrastructure to integrate them. Cities face a crowded, overlapping landscape of frameworks without a shared meta-framework for aligning them. The competitive, project-based funding environment incentivises creating new tools over the harder work of building coherence. And carbon metrics dominate monitoring systems because they are required and standardised, while the co-benefits most critical for a just transition remain aspirational.</p>
+
+    <div class="highlight-box">
+      <p>Of 712 co-benefits identified across ten Mission cities' action plans, only 41% aligned with the NetZeroCities indicator framework. Across five leading cities tracked in the CDP reporting system, social, equity, health, and governance co-benefits were not measured as impact indicators at all. The endpoint of the cascade: only emissions reductions and energy savings get consistently tracked.</p>
+    </div>
+
+    <p>But the deeper problem is relational. What became clearest through immersion in the Bristol case — and confirmed through comparative work across fellow Mission cities and UK Net Zero Living places — is that the 'people work' of governance innovation is chronically invisible in the tools designed to support it. Building trust across sectors, aligning institutions, sustaining participatory processes, translating between community knowledge and institutional logic: all of this is treated as an absorbed cost rather than a core governance investment.</p>
+
+    <p>Bristol's enabling ecosystem — a neutral broker network, embedded research and advocacy capacity, a thriving VCSE sector, core funding accumulated over decades — took 20–30 years to build. Of the 31 Mission Label cities whose journeys I analysed, 28 had been engaged in climate action for nine years or more before joining the Mission. Mission-readiness is not something a top-down programme produces. It's something cities bring to it.</p>
+  </section>
+
+  <!-- CONCEPTUAL CONTRIBUTION -->
+  <section class="narrative-section">
+    <p class="section-label">The conceptual contribution</p>
+    <h2>Tools for thinking, not just tools for doing</h2>
+
+    <p>The series introduces several frameworks developed to help make sense of these dynamics — and to give practitioners, policymakers, and researchers something to work with.</p>
+
+    <div class="insight-grid">
+      <div class="insight-item i-teal">
+        <p class="insight-label">Brief 1</p>
+        <p><strong>The REPAIR framework</strong> synthesises six governance innovation design principles — Reflexivity, Enabling/Embedding, Participatory, Adaptivity, Integrative, Radicality — as both a diagnostic and a design lens for evaluating where governance innovations are strong and where investment is most needed.</p>
+      </div>
+      <div class="insight-item i-green">
+        <p class="insight-label">Brief 1</p>
+        <p><strong>The Innovation Diamond</strong> maps four enabling innovation domains — governance, social, financial, and learning — and argues that learning innovation is the connective thread: without it, the other three pull in different directions and create fragmentation rather than coherent enabling conditions.</p>
+      </div>
+      <div class="insight-item i-amber">
+        <p class="insight-label">Brief 2</p>
+        <p><strong>The Four Functions Model</strong> identifies how cities actually use co-benefits in governance: as compliance, as economies of scale, as theories of change, and as advocacy and communications — with very different governance risks and transformational gains attached to each.</p>
+      </div>
+      <div class="insight-item i-purple">
+        <p class="insight-label">Brief 5</p>
+        <p><strong>The Governance Innovation Tripod</strong> frames learning innovation as the stabilising prong that holds governance, social, and financial innovation together — and applies the REPAIR lens to what 'strategic learning' actually requires across six dimensions that cities must build capacity for in sequence, not simultaneously.</p>
+      </div>
+    </div>
+
+    <p>These frameworks don't resolve the tensions at the heart of net zero governance. But they make them more legible — and more addressable. The three competing institutional logics that mission governance must reconcile (governance/compliance, financial/technical, and community/legitimacy) aren't going away. What changes is whether they are acknowledged and actively managed, or papered over with 'win-win' narratives that eventually expose cities to the legitimacy risks they were designed to prevent.</p>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="narrative-section">
+    <p class="section-label">Who this is for</p>
+    <h2>Practitioners, policymakers, researchers — and anyone trying to make net zero governance more honest</h2>
+
+    <p>For <strong>city officers and practitioners</strong> working in Mission or 'Mission-minded' cities, Net Zero Living places, or UK local authority climate roles: the briefs offer diagnostic frameworks, comparative insights, and honest assessments of what the tools being used are designed to do versus what they can actually deliver with current resourcing.</p>
+
+    <p>For <strong>policymakers and funders</strong> — including the EU Commission, Innovate UK, national governments, and philanthropic funders: the series makes the structural argument for treating governance innovation as a core investment, not an absorbed overhead. It identifies the single enabling condition that all five briefs point to: a (UK) statutory local authority climate duty (or EU member country/international equivalent), with resources to match.</p>
+
+    <p>For <strong>researchers</strong>: the series offers a research agenda grounded in empirical gaps — governance process indicators, regional-scale scaling mechanisms, the operationalisation of co-benefits functions — that the existing literature has not yet adequately addressed.</p>
+
+    <div class="pull-quote">
+      <p>"Do not let perfect be the enemy of the good — but do not mistake first steps for the destination. The task now is sustained, joined-up investment across governance, social, financial, and learning innovation. The journey cannot be skipped; but it has demonstrably advanced."</p>
+    </div>
+
+    <p>The productive margins are real. Trust-based city–civil society partnerships are deepening. Co-benefits approaches are becoming more integrated into planning. Cross-sector networks are strengthening. These are critical footholds — and they deserve to be recognised, resourced, and connected, rather than allowed to dissolve when project funding ends.</p>
+  </section>
+
+</div><!-- /content-wrap -->
+
+<!-- ABOUT -->
+<div class="content-wrap">
+  <section class="about-section">
+    <div class="about-inner">
+      <div>
+        <h3>About the research</h3>
+        <p>The Net Zero Futures (NZF) study (2022–2026) examined how cities can effectively mobilise resources to implement inclusive, participatory net zero strategies aligned with SDG goals. Phase 1 mapped 25 governance tools across UK, EU, and global contexts. Phase 2 involved six months embedded within the NetZeroCities Mission Platform, followed by a case study of Bristol's Net Zero Investment Co-Innovation Lab, drawing on 16 interviews with 18 experts across three stakeholder clusters. 24 expert informational interviews with 22 experts were conducted across the study.</p>
+        <p>The research was made possible by a University of Surrey–Centre for Environment and Sustainability doctoral scholarship and Turing Scheme mobility funding support. Many thanks to the Lund University International Institute for Industrial Environmental Economics, ICLEI Europe, and De Montfort University Institute for Sustainable Futures research groups for hosting parts of the research, and to all the experts that engaged as a part of the study.</p>
+      </div>
+      <div>
+        <h3>About Joel Terwilliger</h3>
+        <p>Joel Terwilliger is an impact and engagement professional and action-practitioner researcher working at the intersection of urban climate governance, just transition, and participatory innovation. He brings over a decade of experience leading stakeholder engagement, communications, and partnership development across higher education and the non-profit sector internationally — alongside nearly four years of doctoral research in UK and EU climate policy contexts.</p>
+        <p>His doctoral research, <em>Towards More Participatory Net Zero Futures</em> (University of Surrey, supervised by Assoc. Prof. Ian Christie, Prof. Subhes Bhattacharyya, and Prof. Stelvia Matos), was developed through direct engagement with the NetZeroCities EU Cities Mission consortium, Bristol City Council's Net Zero Investment Co-Innovation Lab, and Innovate UK's Net Zero Living programme. As a Visiting Researcher at ICLEI Europe (Freiburg, 2024), he contributed to the Climate City Contracts and Monitoring, Evaluation and Learning work packages — including a co-benefits gap analysis that informed the first CCC annual trends report, and the 'CCC Highlights' series, which was adopted and scaled as a core consortium output.</p>
+        <p>Before his doctoral research, Joel led alumni relations and engagement strategy at the University of Auckland (200,000+ alumni across Asia Pacific, Europe, and the US), Newcastle University Business School, and the University of Technology Sydney. He has built international networks, designed large-scale engagement programmes aligned to the UN SDGs, and translated complex research and policy for non-specialist audiences. He is also a Visiting Scholar at the Institute for Sustainable Futures, De Montfort University.</p>
+        <p>His peer-reviewed article on governance innovation design is published in <em>Sustainability</em> (2025, 17(6), p. 2698): <a href="https://doi.org/10.3390/su17062698" target="_blank">doi.org/10.3390/su17062698</a>. His second article, on co-benefits and monitoring systems in urban governance, is forthcoming in <em>Urban Governance</em> (2026, accepted).</p>
+        <div class="about-links">
+          <a href="https://www.linkedin.com/in/joel-terwilliger-8aab2a19/" target="_blank">LinkedIn</a>
+          <a href="https://orcid.org/0000-0003-4893-2846" target="_blank">ORCID 0000-0003-4893-2846</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>Net Zero Futures Research Series &nbsp;·&nbsp; University of Surrey Centre for Environment and Sustainability &nbsp;·&nbsp; 2026<br>
+  Suggested citation: Terwilliger, J., 2026. <em>Net Zero Futures Research Series</em>. University of Surrey Centre for Environment and Sustainability.<br>
+  Available at: <a href="https://zenodo.org/communities/nzf-series/records" target="_blank">zenodo.org/communities/nzf-series/records</a></p>
+</footer>
+
+</body>
+</html>
