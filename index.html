@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +41,9 @@ body {
   background: var(--white);
   line-height: 1.7;
 }
+section[id] {
+  scroll-margin-top: 56px;
+}
 
 /* ── HEADER ─────────────────────────────────────────────────────────────── */
 .site-header {
@@ -65,6 +69,40 @@ body {
   padding: 0.25rem 0.75rem;
   border-radius: 2rem;
 }
+
+/* ── HERO NAV (pill buttons) ───────────────────────────────────────────── */
+.hero-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+.hero-nav a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid;
+  white-space: nowrap;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.hero-nav a:hover { opacity: 0.8; }
+.hero-nav a.nav-teal   { color: var(--surrey-teal-pl);   background: rgba(29,168,160,0.16); border-color: rgba(29,168,160,0.5); }
+.hero-nav a.nav-green  { color: var(--surrey-green-pl);  background: rgba(46,125,79,0.18);  border-color: rgba(46,125,79,0.55); }
+.hero-nav a.nav-purple { color: var(--surrey-purple-pl); background: rgba(123,63,158,0.2);  border-color: rgba(123,63,158,0.55); }
+
+.back-to-top {
+  display: inline-block;
+  margin-top: 2rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--surrey-teal-dk);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(21,122,115,0.3);
+}
+.back-to-top:hover { border-color: var(--surrey-teal-dk); }
 
 /* ── HERO ────────────────────────────────────────────────────────────────── */
 .hero {
@@ -468,7 +506,7 @@ footer a:hover { text-decoration: underline; }
   <span class="badge">Research Series</span>
 </header>
 
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-inner">
     <p class="hero-kicker">Towards More Participatory Net Zero Futures (NZF) &nbsp;·&nbsp; Centre for Environment and Sustainability</p>
     <h1>Net Zero Futures<br>Research Series<br><em>does innovating net zero<br>mission governance actually work?</em></h1>
@@ -478,6 +516,11 @@ footer a:hover { text-decoration: underline; }
       <a href="https://www.linkedin.com/in/joel-terwilliger-8aab2a19/" target="_blank">LinkedIn</a> &nbsp;·&nbsp;
       <a href="https://orcid.org/0000-0003-4893-2846" target="_blank">ORCID 0000-0003-4893-2846</a>
     </p>
+    <div class="hero-nav">
+      <a class="nav-teal" href="#about">About</a>
+      <a class="nav-green" href="#series">Download Series</a>
+      <a class="nav-purple" href="#sensemaking">Sensemaking Tools</a>
+    </div>
   </div>
 </section>
 
@@ -523,7 +566,7 @@ footer a:hover { text-decoration: underline; }
   </section>
 
   <!-- BRIEF CARDS -->
-  <section class="series-section">
+  <section class="series-section" id="series">
     <p class="section-label">The series</p>
     <h2>Five briefs, five angles on the same challenge</h2>
     <p>Each brief stands on its own but builds on the one before. Together they move from conceptual tools, to data analysis, to Bristol's toolkit, to lived practitioner experience, to a final critical reckoning with the mission approach itself.</p>
@@ -550,7 +593,7 @@ footer a:hover { text-decoration: underline; }
           <p class="brief-tag">Brief 2 · 26 May 2026</p>
           <p class="brief-title">Valuing What Matters in Urban Climate Governance: Co-Benefits Gaps and Functions in Making the Case for Action</p>
           <p class="brief-desc">Traces a four-stage 'co-benefits cascade' — from what frameworks propose to what is actually measured — across Mission Label cities, from a close examination of the 10 in Cohort 1, to wider patterns mirrored in the 92 in Cohorts 1–4, to the overarching urban climate governance data system. Introduces the Four Functions Model for how cities use co-benefits in practice.</p>
-          <p class="brief-supplement">Supplements the forthcoming article <em>Making the Case for Climate Action in Cities</em> in <em>Urban Governance</em> (2026, accepted)</p>
+          <p class="brief-supplement">Supplements the article <em>Making the Case for Climate Action in Cities</em> in <em>Urban Governance</em> (2026) — <a href="https://doi.org/10.1016/j.ugj.2026.05.002" target="_blank" onclick="event.stopPropagation()">doi.org/10.1016/j.ugj.2026.05.002</a></p>
         </div>
         <a class="brief-dl" href="https://zenodo.org/records/20595362/files/NZF_PolicyBrief2_Co-Benefits%20in%20Urban%20Gov.pdf?download=1" target="_blank" onclick="event.stopPropagation()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
@@ -598,6 +641,7 @@ footer a:hover { text-decoration: underline; }
       </div>
 
     </div>
+    <a class="back-to-top" href="#top">↑ Back to top</a>
   </section>
 
   <!-- WHAT I FOUND -->
@@ -619,7 +663,7 @@ footer a:hover { text-decoration: underline; }
   </section>
 
   <!-- CONCEPTUAL CONTRIBUTION -->
-  <section class="narrative-section">
+  <section class="narrative-section" id="sensemaking">
     <p class="section-label">The conceptual contribution</p>
     <h2>Tools for thinking, not just tools for doing</h2>
 
@@ -645,6 +689,7 @@ footer a:hover { text-decoration: underline; }
     </div>
 
     <p>These frameworks don't resolve the tensions at the heart of net zero governance. But they make them more legible — and more addressable. The three competing institutional logics that mission governance must reconcile (governance/compliance, financial/technical, and community/legitimacy) aren't going away. What changes is whether they are acknowledged and actively managed, or papered over with 'win-win' narratives that eventually expose cities to the legitimacy risks they were designed to prevent.</p>
+    <a class="back-to-top" href="#top">↑ Back to top</a>
   </section>
 
   <!-- WHO IT'S FOR -->
@@ -669,7 +714,7 @@ footer a:hover { text-decoration: underline; }
 
 <!-- ABOUT -->
 <div class="content-wrap">
-  <section class="about-section">
+  <section class="about-section" id="about">
     <div class="about-inner">
       <div>
         <h3>About the research</h3>
@@ -681,11 +726,12 @@ footer a:hover { text-decoration: underline; }
         <p>Joel Terwilliger is an impact and engagement professional and action-practitioner researcher working at the intersection of urban climate governance, just transition, and participatory innovation. He brings over a decade of experience leading stakeholder engagement, communications, and partnership development across higher education and the non-profit sector internationally — alongside nearly four years of doctoral research in UK and EU climate policy contexts.</p>
         <p>His doctoral research, <em>Towards More Participatory Net Zero Futures</em> (University of Surrey, supervised by Assoc. Prof. Ian Christie, Prof. Subhes Bhattacharyya, and Prof. Stelvia Matos), was developed through direct engagement with the NetZeroCities EU Cities Mission consortium, Bristol City Council's Net Zero Investment Co-Innovation Lab, and Innovate UK's Net Zero Living programme. As a Visiting Researcher at ICLEI Europe (Freiburg, 2024), he contributed to the Climate City Contracts and Monitoring, Evaluation and Learning work packages — including a co-benefits gap analysis that informed the first CCC annual trends report, and the 'CCC Highlights' series, which was adopted and scaled as a core consortium output.</p>
         <p>Before his doctoral research, Joel led alumni relations and engagement strategy at the University of Auckland (200,000+ alumni across Asia Pacific, Europe, and the US), Newcastle University Business School, and the University of Technology Sydney. He has built international networks, designed large-scale engagement programmes aligned to the UN SDGs, and translated complex research and policy for non-specialist audiences. He is also a Visiting Scholar at the Institute for Sustainable Futures, De Montfort University.</p>
-        <p>His peer-reviewed article on governance innovation design is published in <em>Sustainability</em> (2025, 17(6), p. 2698): <a href="https://doi.org/10.3390/su17062698" target="_blank">doi.org/10.3390/su17062698</a>. His second article, on co-benefits and monitoring systems in urban governance, is forthcoming in <em>Urban Governance</em> (2026, accepted).</p>
+        <p>His peer-reviewed article on governance innovation design is published in <em>Sustainability</em> (2025, 17(6), p. 2698): <a href="https://doi.org/10.3390/su17062698" target="_blank">doi.org/10.3390/su17062698</a>. His second article, on co-benefits and monitoring systems in urban governance, is published in <em>Urban Governance</em> (2026): <a href="https://doi.org/10.1016/j.ugj.2026.05.002" target="_blank">doi.org/10.1016/j.ugj.2026.05.002</a>.</p>
         <div class="about-links">
           <a href="https://www.linkedin.com/in/joel-terwilliger-8aab2a19/" target="_blank">LinkedIn</a>
           <a href="https://orcid.org/0000-0003-4893-2846" target="_blank">ORCID 0000-0003-4893-2846</a>
         </div>
+        <a class="back-to-top" href="#top">↑ Back to top</a>
       </div>
     </div>
   </section>
