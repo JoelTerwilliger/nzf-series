@@ -92,6 +92,177 @@ section[id] {
 .hero-nav a.nav-teal   { color: var(--surrey-teal-pl);   background: rgba(29,168,160,0.16); border-color: rgba(29,168,160,0.5); }
 .hero-nav a.nav-green  { color: var(--surrey-green-pl);  background: rgba(46,125,79,0.18);  border-color: rgba(46,125,79,0.55); }
 .hero-nav a.nav-purple { color: var(--surrey-purple-pl); background: rgba(123,63,158,0.2);  border-color: rgba(123,63,158,0.55); }
+.hero-nav a.nav-amber  { color: var(--surrey-amber-pl);  background: rgba(200,154,26,0.18); border-color: rgba(200,154,26,0.5); }
+
+/* ── COMPASS SECTION ─────────────────────────────────────────────────────── */
+.compass-section {
+  padding: 3.5rem 0;
+  border-top: 1px solid var(--gray-light);
+}
+.compass-section h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
+  color: var(--gray-dark);
+}
+.compass-section > p {
+  font-size: 1rem;
+  color: var(--gray-mid);
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+  max-width: 640px;
+}
+.compass-brief-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+}
+.brief-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.7rem 0.3rem 0.5rem;
+  border-radius: 2rem;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.brief-badge .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.bb1 { background: var(--surrey-teal-pl);    color: var(--surrey-teal-dk);  border: 1px solid rgba(29,168,160,0.3); }
+.bb1 .dot { background: var(--surrey-teal-dk); }
+.bb2 { background: var(--surrey-amber-pl);   color: var(--surrey-amber);    border: 1px solid rgba(200,154,26,0.3); }
+.bb2 .dot { background: var(--surrey-amber); }
+.bb3 { background: var(--surrey-crimson-pl); color: var(--surrey-crimson);  border: 1px solid rgba(176,48,32,0.25); }
+.bb3 .dot { background: var(--surrey-crimson); }
+.bb4 { background: var(--surrey-blue-pl);    color: var(--surrey-blue);     border: 1px solid rgba(74,144,196,0.3); }
+.bb4 .dot { background: var(--surrey-blue); }
+.bb5 { background: var(--surrey-green-pl);   color: var(--surrey-green);    border: 1px solid rgba(46,125,79,0.25); }
+.bb5 .dot { background: var(--surrey-green); }
+
+.compass-domain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+@media (max-width: 600px) {
+  .compass-domain-grid { grid-template-columns: 1fr; }
+}
+.compass-domain-card {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--gray-light);
+}
+.compass-domain-header {
+  padding: 0.7rem 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.compass-domain-header strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.compass-domain-header em {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.75);
+  font-style: italic;
+}
+.dh-social     { background: #0F6E56; }
+.dh-learning   { background: #0B1F4D; }
+.dh-governance { background: #0078C7; }
+.dh-financial  { background: #3B6D11; }
+
+.compass-domain-body {
+  padding: 0.9rem 1rem;
+  background: var(--white);
+}
+.compass-domain-body .domain-q {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--gray-dark);
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.compass-domain-body .domain-rc {
+  font-size: 0.82rem;
+  color: var(--gray-mid);
+  line-height: 1.65;
+  margin-bottom: 0.65rem;
+}
+.domain-brief-refs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+}
+.domain-brief-refs .brief-badge {
+  font-size: 0.68rem;
+  padding: 0.2rem 0.55rem 0.2rem 0.4rem;
+}
+
+.compass-ee-box {
+  background: #FDDCBA;
+  border: 1px solid #A0522D;
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.compass-ee-box p {
+  font-size: 0.88rem;
+  color: #5C2A00;
+  line-height: 1.65;
+  margin-bottom: 0 !important;
+}
+
+.compass-image-block {
+  margin: 1.5rem 0;
+}
+.compass-image-block img {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--gray-light);
+  display: block;
+}
+.compass-image-block figcaption {
+  font-size: 0.78rem;
+  color: var(--gray-mid);
+  font-style: italic;
+  margin-top: 0.5rem;
+  text-align: center;
+  line-height: 1.5;
+}
+.compass-dl-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.compass-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  background: var(--surrey-amber-pl);
+  color: var(--surrey-amber);
+  border: 1px solid rgba(200,154,26,0.4);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.compass-dl-btn:hover { opacity: 0.8; }
+.compass-dl-btn svg { width: 14px; height: 14px; }
 
 .back-to-top {
   display: inline-block;
@@ -520,6 +691,7 @@ footer a:hover { text-decoration: underline; }
       <a class="nav-teal" href="#about">About</a>
       <a class="nav-green" href="#series">Download Series</a>
       <a class="nav-purple" href="#sensemaking">Sensemaking Tools</a>
+      <a class="nav-amber" href="#compass">Just Transition Compass</a>
     </div>
   </div>
 </section>
@@ -689,6 +861,109 @@ footer a:hover { text-decoration: underline; }
     </div>
 
     <p>These frameworks don't resolve the tensions at the heart of net zero governance. But they make them more legible — and more addressable. The three competing institutional logics that mission governance must reconcile (governance/compliance, financial/technical, and community/legitimacy) aren't going away. What changes is whether they are acknowledged and actively managed, or papered over with 'win-win' narratives that eventually expose cities to the legitimacy risks they were designed to prevent.</p>
+    <a class="back-to-top" href="#top">↑ Back to top</a>
+  </section>
+
+  <!-- JUST TRANSITION COMPASS -->
+  <section class="compass-section" id="compass">
+    <p class="section-label">Navigation Tool</p>
+    <h2>The Just Transition Compass</h2>
+    <p>A canvas for mapping your enabling ecosystem — grounded in the NZF research series. Each innovation domain and reflective prompt draws on the evidence and frameworks developed across the five briefs. The colour-coded brief references below show where each domain is primarily rooted.</p>
+
+    <!-- Brief legend -->
+    <div class="compass-brief-legend">
+      <span class="brief-badge bb1"><span class="dot"></span>NZF-B1 · Urban Governance Innovation Design</span>
+      <span class="brief-badge bb2"><span class="dot"></span>NZF-B2 · Co-Benefits in Urban Climate Governance</span>
+      <span class="brief-badge bb3"><span class="dot"></span>NZF-B3 · The Bristol Just Transition Toolkit</span>
+      <span class="brief-badge bb4"><span class="dot"></span>NZF-B4 · Governing Net Zero Missions</span>
+      <span class="brief-badge bb5"><span class="dot"></span>NZF-B5 · Missions, Myths &amp; Contemporary PGTs</span>
+    </div>
+
+    <!-- Domain cards -->
+    <div class="compass-domain-grid">
+
+      <div class="compass-domain-card">
+        <div class="compass-domain-header dh-social">
+          <strong>Social Innovation</strong>
+          <em>community- and citizen-led practices, co-design, and inclusion</em>
+        </div>
+        <div class="compass-domain-body">
+          <p class="domain-q">Who is already engaged, and on whose terms? Whose voices and expertise are structurally excluded — and what would it take to move from consultation to genuine co-production?</p>
+          <p class="domain-rc"><em>Reflexive considerations:</em> The briefs consistently distinguish tokenistic engagement from trust-based, asset-building co-production that gives community knowledge real influence. The harder question is not just who attends but whether their input shapes outcomes — and whether your engagement model is building shared ownership or reproducing extractive dynamics over time.</p>
+          <div class="domain-brief-refs">
+            <span class="brief-badge bb3"><span class="dot"></span>NZF-B3</span>
+            <span class="brief-badge bb4"><span class="dot"></span>NZF-B4</span>
+            <span class="brief-badge bb5"><span class="dot"></span>NZF-B5</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="compass-domain-card">
+        <div class="compass-domain-header dh-learning">
+          <strong>Learning Innovation</strong>
+          <em>systems for knowledge generation, exchange, and adaptation</em>
+        </div>
+        <div class="compass-domain-body">
+          <p class="domain-q">What are you actually measuring — and does it capture what matters for a just transition? How is learning flowing between community, city, and regional levels, or is each system learning within its own boundaries?</p>
+          <p class="domain-rc"><em>Reflexive considerations:</em> There is often a significant gap between what is named, what is indicated, and what is actually measured. Genuine reflexivity means asking not just "are we on track?" but "on track toward what, and for whom?" — and ensuring that learning at community level actively informs planning at city and regional level, rather than sitting alongside it.</p>
+          <div class="domain-brief-refs">
+            <span class="brief-badge bb1"><span class="dot"></span>NZF-B1</span>
+            <span class="brief-badge bb2"><span class="dot"></span>NZF-B2</span>
+            <span class="brief-badge bb5"><span class="dot"></span>NZF-B5</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="compass-domain-card">
+        <div class="compass-domain-header dh-governance">
+          <strong>Governance Innovation</strong>
+          <em>new structures, processes, and coordination mechanisms</em>
+        </div>
+        <div class="compass-domain-body">
+          <p class="domain-q">What is your city's net zero journey so far, and what are the key requirements and constraints shaping it? What informal forums, networks, or spaces already bring sectors together — and where are the gaps that need to be created?</p>
+          <p class="domain-rc"><em>Reflexive considerations:</em> Start with context before jumping to structures. Understanding where your city is on its journey shapes what is realistic next. Once you have a sense of the landscape, look for the connective tissue: the people working across organisations, the neutral spaces where different sectors meet. These anchor people and local champions are often the best starting point for deepening mutual understanding and beginning to connect the dots.</p>
+          <div class="domain-brief-refs">
+            <span class="brief-badge bb1"><span class="dot"></span>NZF-B1</span>
+            <span class="brief-badge bb4"><span class="dot"></span>NZF-B4</span>
+            <span class="brief-badge bb5"><span class="dot"></span>NZF-B5</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="compass-domain-card">
+        <div class="compass-domain-header dh-financial">
+          <strong>Financial Innovation</strong>
+          <em>novel funding models, investment strategies, and resource mobilisation</em>
+        </div>
+        <div class="compass-domain-body">
+          <p class="domain-q">What resources — funding, assets, skills, relationships, data — already exist locally, and how are they being mobilised? Where are community priorities not yet connecting to investment or delivery, and what would help bridge that gap?</p>
+          <p class="domain-rc"><em>Reflexive considerations:</em> Resources should be understood broadly: community assets, volunteer capacity, local data, trusted relationships, and in-kind contributions are all part of the picture. The gap between a community action plan and an investable proposition is real and often requires specialist support and multiple funding cycles to close — building shared understanding of what change looks like, and for whom, is often the missing piece that makes everything else more coherent.</p>
+          <div class="domain-brief-refs">
+            <span class="brief-badge bb2"><span class="dot"></span>NZF-B2</span>
+            <span class="brief-badge bb3"><span class="dot"></span>NZF-B3</span>
+            <span class="brief-badge bb4"><span class="dot"></span>NZF-B4</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /compass-domain-grid -->
+
+    <div class="compass-ee-box">
+      <p><strong>Enabling Ecosystem</strong> — the relational 'people work' and 'impact infrastructure' that hold the innovation domains together. Anchor people, brokers, and a neutral space are often the starting point: who convenes across sectors? Where is the trusted, non-issue-specific space that can hold relationships over time?
+      <span style="margin-left:0.5rem;">
+        <span class="brief-badge bb4" style="display:inline-flex;"><span class="dot"></span>NZF-B4</span>
+        <span class="brief-badge bb5" style="display:inline-flex;margin-left:0.3rem;"><span class="dot"></span>NZF-B5</span>
+      </span></p>
+    </div>
+
+    <div class="compass-dl-row">
+      <a class="compass-dl-btn" href="https://zenodo.org/records/20829964/files/NZF_Just_Transition_Compass_Terwilliger_2026.pdf?download=1" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download Compass Guidebook
+      </a>
+      <span style="font-size:0.82rem;color:var(--gray-mid);">Includes basis, blank compass and guide to use, with a Bristol illustrative application — a hybrid of productive margins, progress, and assets &amp; mechanisms built to get you started</span>
+    </div>
+
     <a class="back-to-top" href="#top">↑ Back to top</a>
   </section>
 
